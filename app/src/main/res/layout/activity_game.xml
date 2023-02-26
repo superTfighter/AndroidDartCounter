@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".view.GameActivity">
+
+    <TextView
+        android:id="@+id/current_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/points_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0" />
+
+    <Button
+        android:id="@+id/enter_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter points" />
+
+    <Button
+        android:id="@+id/next_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next player" />
+
+
+</LinearLayout>
