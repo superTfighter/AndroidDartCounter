@@ -15,30 +15,37 @@
         android:layout_height="62dp"
         android:background="@drawable/black_border"
         android:ems="10"
+        android:layout_margin="25dp"
         android:inputType="textPersonName"
-        android:text="Enter player name" />
+        android:textAlignment="center"
+        android:hint="@string/enter_player_name" />
 
     <Button
         android:id="@+id/add_player_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add player" />
+        android:layout_height="50dp"
+        android:layout_margin="25dp"
+        android:text="@string/add_player" />
 
     <NumberPicker
         android:id="@+id/max_point"
         android:layout_width="fill_parent"
+        android:layout_margin="25dp"
+        android:layout_marginBottom="0dp"
         android:layout_height="120dp" />
 
     <Button
         android:id="@+id/start_game"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Game" />
+        android:layout_height="50dp"
+        android:layout_margin="25dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/start_game" />
 
     <ListView
         android:id="@+id/players_list"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
         android:layout_weight="1" />
 
 

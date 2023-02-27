@@ -1,15 +1,15 @@
 package com.supert.dartcalculator.view;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.supert.dartcalculator.R;
@@ -17,6 +17,8 @@ import com.supert.dartcalculator.controller.GameController;
 import com.supert.dartcalculator.controller.IGameController;
 import com.supert.dartcalculator.model.GameModel;
 import com.supert.dartcalculator.model.IGame;
+
+import java.io.Serializable;
 
 public class GameActivity extends AppCompatActivity implements IGameView {
 
@@ -58,7 +60,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
             if(newPoint <= 0)
             {
-                Toast.makeText(getApplicationContext(), "Congrats: " + this.gameModel.getCurrentPlayer().getName() + " won the game!", Toast.LENGTH_LONG).show();
+                // Show player won
+                showWonDialog(this.gameModel.getCurrentPlayer().getName());
             }
 
             this.gameModel.getCurrentPlayer().setScore(newPoint);
@@ -71,6 +74,37 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
     @Override
     public void updatePlayerName() {
-        playerName.setText(gameModel.getCurrentPlayer().getName() + " points: " + gameModel.getCurrentPlayer().getScore());
+
+        String playerNameS = gameModel.getCurrentPlayer().getName();
+        int playerScore = gameModel.getCurrentPlayer().getScore();
+        String pointMessage = getString(R.string.player_score);
+        pointMessage = String.format(pointMessage,playerNameS,playerScore);
+
+        playerName.setText(pointMessage);
+    }
+
+    @Override
+    public void showWonDialog(String playerName) {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+
+        String wonMessage = String.format(getString(R.string.player_won_message),playerName);
+
+        dialogBuilder.setMessage(wonMessage).setPositiveButton(R.string.accept_new_game, (dialogInterface, i) -> {
+
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("Game", (Serializable) GameActivity.this.gameModel);
+
+            startActivity(intent);
+
+            GameActivity.this.finish();
+
+        });
+
+        AlertDialog dialog = dialogBuilder.create();
+
+        dialog.show();
     }
 }

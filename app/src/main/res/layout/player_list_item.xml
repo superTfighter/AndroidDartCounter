@@ -19,11 +19,11 @@
 
     <Button
         android:id="@+id/delete_button"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Delete"
-        android:background="@color/red"
+        android:text="@string/delete_player"
+        android:background="@drawable/delete_button_style"
     />
 
 

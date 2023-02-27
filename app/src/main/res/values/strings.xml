@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">DartCalculator</string>
+    <string name="accept_new_game">New Game</string>
+    <string name="add_player">Add player</string>
+    <string name="start_game">Start Game</string>
+    <string name="enter_player_name">Enter player name</string>
+    <string name="enter_points">Enter points</string>
+    <string name="next_player">Next player</string>
+    <string name="player_score">%s points: %d</string>
+    <string name="player_won_message">%s has won the game!</string>
+    <string name="game_begin_check_error">Check if everything is OK!</string>
+    <string name="player_added">Player added: %s</string>
+    <string name="please_add_name">Please add a player</string>
+    <string name="delete_player">Delete</string>
 </resources>

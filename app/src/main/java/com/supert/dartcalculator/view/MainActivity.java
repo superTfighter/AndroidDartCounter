@@ -17,6 +17,7 @@ import com.supert.dartcalculator.R;
 import com.supert.dartcalculator.controller.IStartController;
 import com.supert.dartcalculator.controller.StartController;
 import com.supert.dartcalculator.model.GameModel;
+import com.supert.dartcalculator.model.IPlayer;
 import com.supert.dartcalculator.model.Player;
 import com.supert.dartcalculator.model.PlayerListAdapter;
 
@@ -41,6 +42,19 @@ public class MainActivity extends AppCompatActivity implements IStartView {
         startPresenter = new StartController();
         startPresenter.bind(this);
 
+        //Get intent extras
+        GameModel gameModel = (GameModel) getIntent().getSerializableExtra("Game");
+
+        if(gameModel != null)
+        {
+            List<IPlayer> oldPlayers = gameModel.getPlayers();
+
+            for(IPlayer oldPlayer : oldPlayers)
+            {
+                startPresenter.onAddPlayerClicked(new Player(oldPlayer.getName()));
+            }
+        }
+
         //List init
         playersList = findViewById(R.id.players_list);
 
@@ -58,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements IStartView {
             maxPointText.setMinValue(101);
             maxPointText.setMaxValue(501);
             maxPointText.setWrapSelectorWheel(true);
+            maxPointText.setValue(501);
+
             maxPointText.setOnValueChangedListener((picker, oldVal, newVal) -> {
                 startPresenter.onSetMaxScore(newVal);
             });
@@ -75,11 +91,14 @@ public class MainActivity extends AppCompatActivity implements IStartView {
             if(!TextUtils.isEmpty(playerNameString) && !playerNameString.equals("Enter player name"))
             {
                 startPresenter.onAddPlayerClicked(new Player(playerNameString));
-                Toast.makeText(getApplicationContext(), "Player added: " + playerNameString, Toast.LENGTH_SHORT).show();
+
+                String message = String.format(getString(R.string.player_added), playerNameString);
+
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             }
             else
             {
-                Toast.makeText(getApplicationContext(), "Please enter a name!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.please_add_name, Toast.LENGTH_SHORT).show();
             }
 
             adapter.notifyDataSetChanged();
@@ -98,12 +117,10 @@ public class MainActivity extends AppCompatActivity implements IStartView {
             }
             else
             {
-                Toast.makeText(getApplicationContext(), "Check if everything is OK!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.game_begin_check_error), Toast.LENGTH_SHORT).show();
 
             }
         });
     }
-
-
 
 }
