@@ -66,6 +66,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
             this.gameModel.getCurrentPlayer().setScore(newPoint);
 
+            pointsText.setText("");
+
             updatePlayerName();
         });
 

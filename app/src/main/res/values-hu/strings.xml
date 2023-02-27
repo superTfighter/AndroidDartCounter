@@ -4,7 +4,7 @@
     <string name="add_player">Játékos hozzádása</string>
     <string name="start_game">Játék elindítása</string>
     <string name="enter_player_name">Írd be a játékos nevét!</string>
-    <string name="enter_points">Pont mentése</string>
+    <string name="enter_points">Következő dobás</string>
     <string name="next_player">Következő játékos</string>
     <string name="player_score">%s pontjai: %d</string>
     <string name="player_won_message">%s megnyerte a játékot!</string>
@@ -12,4 +12,5 @@
     <string name="player_added">Játékos hozzáadva: %s</string>
     <string name="please_add_name">Kérlek írj be egy érvényes nevet!</string>
     <string name="delete_player">Törlés</string>
+    <string name="throw_score_text">Írd ide mennyit dobtál!1</string>
 </resources>

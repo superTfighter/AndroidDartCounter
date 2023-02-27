@@ -6,7 +6,8 @@
     android:layout_height="fill_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".view.GameActivity">
+    tools:context=".view.GameActivity"
+    android:background="@color/cork">
 
     <TextView
         android:id="@+id/current_player"
@@ -23,13 +24,14 @@
         android:layout_margin="25dp"
         android:ems="10"
         android:inputType="number"
-        android:text="0" />
+        android:hint="@string/throw_score_text" />
 
     <Button
         android:id="@+id/enter_point"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="25dp"
+        android:background="@drawable/button_rounded_background"
         android:text="@string/enter_points" />
 
     <Button
@@ -37,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_margin="25dp"
+        android:background="@drawable/button_rounded_background"
         android:text="@string/next_player" />
 
 
